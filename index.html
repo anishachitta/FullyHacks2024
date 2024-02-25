@@ -1,31 +1,53 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Neon Green Website</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Include the Google Fonts link -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Neon Caption Generator</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #ff00ff; /* Neon pink */
+            text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff; /* Neon pink glow */
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff00ff; /* Neon pink */
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff66ff; /* Lighter neon pink on hover */
+        }
+    </style>
 </head>
 <body>
+    <h1>Enter a Neon Caption</h1>
+    <input type="text" id="caption" placeholder="Enter your caption...">
+    <br>
+    <button onclick="generateNeonCaption()">Generate Neon Caption</button>
+    <div id="neonCaption"></div>
 
-<div class="container">
-  <h1>Hello World</h1>
-  <h2>This is the place where the storyline goes</h2>
-
-  <div class="pretty-div">
-    <p>This is a pretty div.</p>
-  </div>
-
-  <div class="pretty-div">
-    <p>This is another pretty div.</p>
-  </div>
-
-  <p class="accented-text">This text is accented!</p>
-</div>
-
+    <script>
+        function generateNeonCaption() {
+            var caption = document.getElementById('caption').value;
+            document.getElementById('neonCaption').innerHTML = caption;
+        }
+    </script>
 </body>
 </html>
