@@ -4,22 +4,29 @@ import requests
 
 def generate_response(prompt):
     # Set up the OpenAI API endpoint
-    endpoint = "https://api.openai.com/v1/engines/davinci/completions"
+    endpoint = "https://api.openai.com/v1/engines/text-davinci-003/completions"
     # Set up your OpenAI API key
-    api_key = "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"
+    api_key = "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"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {api_key}"
     }
     data = {
-        "model": "davinci",
         "prompt": prompt,
         "max_tokens": 50
     }
     # Send a POST request to the OpenAI API
     response = requests.post(endpoint, json=data, headers=headers)
     # Extract and return the generated response
-    return response.json()["choices"][0]["text"].strip()
+    response_json = response.json()
+    
+    if 'choices' in response_json:
+        return response_json['choices'][0]['text'].strip()
+    else:
+        # Handle the case where the response format has changed
+        return "Unexpected response format."
+
+
 
 def main():
 
