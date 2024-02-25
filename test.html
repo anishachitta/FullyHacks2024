@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <header>
         <img src = "bower picture.jpeg" style="max-width: 20%;" alt="Bow Picture">
     </header>
-    <title>CaptionToColor</title>
+    <title>Neon Caption Generator</title>
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Obitron&display=swap');
         body, html {
             margin: 0;
             padding: 0;
@@ -16,7 +15,7 @@
             overflow: hidden;
             background-color: black;
             color: white;
-            font-family: Orbitron, sans-serif;
+            font-family: Arial, sans-serif;
             text-align: center;
         }
         .container {
@@ -32,7 +31,7 @@
             height: 150vh;
             display: flex;
             flex-direction: column;
-            font-size: 50px;
+            font-size: 20px;
             justify-content: center;
             align-items: center;
             scroll-snap-align: start;
@@ -50,10 +49,9 @@
         }
         h1 {
             color: #ffffff; /* Neon pink */
-            font-style: normal;
-            
-            text-shadow: 0 0 10px #fe50db, 0 0 20px #fe50db, 0 0 30px #fe50db, 0 0 40px #fe50db, 0 0 50px #fe50db; /* Neon pink glow */
-            margin-bottom: 50px;
+            font-style: italic;
+            text-shadow: 0 0 10px #fe50db, 0 0 20px #fe50db, 0 0 30px #fe50db, 0 0 40px #fe50db, 0 0 50px #fe50db, 0 0 60px #fe50db, 0 0 70px #fe50db; /* Neon pink glow */
+            margin-bottom: 20px;
         }
         input[type="text"] {
             padding: 10px;
@@ -92,7 +90,7 @@
 <body>
     <div class="container">
         <div id="section1" class="section">
-            <h1>CaptionToColor</h1>
+            <h1>Neon Caption Generator</h1>
             <button onclick="scrollToNextSection()">Get Started!</button>
         </div>
         <div id="section2" class="section">
@@ -103,7 +101,7 @@
             <button onclick="generateNeonCaption()">Generate Neon Caption</button>
         </div>
         <div id="section3" class="section">
-            <h1>Your Caption</h1>
+            <h1>Result</h1>
             <div id="neonCaption"></div>
         </div>
         <div id="section4" class="section">
@@ -114,9 +112,9 @@
     <script>
         function postData() {
             const data = {
-            "text": document.getElementById('caption').value
+            Text: 'neonCaption'
         };
-            fetch('https://b854-34-125-81-19.ngrok-free.app/predict', {
+            fetch('https://3ef9-34-125-81-19.ngrok-free.app/predict', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json'
@@ -132,7 +130,7 @@
             console.error('There was a problem with the fetch operation:', error);
             alert('There was a problem with the fetch operation:\n' + error.message);
         });
-
+        
         }
         function scrollToNextSection() {
             // Scroll to the next section
