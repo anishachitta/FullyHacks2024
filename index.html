@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <img src = "heartpic.jpeg">
     <title>Neon Caption Generator</title>
     <style>
         body, html {
@@ -23,9 +24,10 @@
         }
         .section {
             position: relative;
-            height: 100vh;
+            height: 150vh;
             display: flex;
             flex-direction: column;
+            font-size: 20px;
             justify-content: center;
             align-items: center;
             scroll-snap-align: start;
@@ -42,20 +44,20 @@
             z-index: 1;
         }
         h1 {
-            color: #ff00ff; /* Neon pink */
+            color: #ffe100; /* Neon pink */
             text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff; /* Neon pink glow */
             margin-bottom: 20px;
         }
         input[type="text"] {
             padding: 10px;
-            font-size: 16px;
+            font-size: 30px;
             border: none;
             border-radius: 5px;
             margin-bottom: 20px;
         }
         button {
             padding: 10px 20px;
-            font-size: 16px;
+            font-size: 30px;
             background-color: #ff00ff; /* Neon pink */
             color: black;
             border: none;
@@ -66,9 +68,22 @@
             background-color: #ff66ff; /* Lighter neon pink on hover */
         }
         #neonCaption {
-            font-size: 36px; /* Increased font size */
-            color: #ff00ff; /* Neon pink */
+            font-size: 45px; /* Increased font size */
+            color: #a2ff00; /* Neon pink */
             text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff; /* Neon pink glow */
+        }
+        .picture-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        
+        }
+        .picture {
+            width: 150px;
+            height: 150px;
+            background-color: #fff; /* White background */
+            margin: 0 10px; /* Some margin between pictures */
+            border-radius: 10px; /* Rounded corners */
         }
     </style>
 </head>
@@ -76,6 +91,12 @@
     <div class="container">
         <div id="section1" class="section">
             <h1>Neon Caption Generator</h1>
+            <div class="picture-container">
+                <div class="picture"></div>
+                <div class="picture"></div>
+                <div class="picture"></div>
+                <div class="picture"></div>
+            </div>
         </div>
         <div id="section2" class="section">
             <h1>Enter a Neon Caption</h1>
