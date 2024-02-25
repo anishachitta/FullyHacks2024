@@ -3,12 +3,43 @@
 <head>
     <title>Neon Caption Generator</title>
     <style>
-        body {
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
             background-color: black;
             color: white;
             font-family: Arial, sans-serif;
             text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: auto; /* Change from hidden to auto */
+            scroll-snap-type: y mandatory;
             padding-top: 50px;
+        }
+        .section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            scroll-snap-align: start;
+            transition: transform 0.5s ease-in-out;
+        }
+        .section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 2px; /* Height of the divider */
+            background-color: #ff00ff; /* Neon pink */
+            box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff; /* Neon pink glow */
+            z-index: 1;
         }
         h1 {
             color: #ff00ff; /* Neon pink */
@@ -34,19 +65,40 @@
         button:hover {
             background-color: #ff66ff; /* Lighter neon pink on hover */
         }
+        #neonCaption {
+            font-size: 24px;
+        }
     </style>
 </head>
 <body>
-    <h1>Enter a Neon Caption</h1>
-    <input type="text" id="caption" placeholder="Enter your caption...">
-    <br>
-    <button onclick="generateNeonCaption()">Generate Neon Caption</button>
-    <div id="neonCaption"></div>
+    <div class="container">
+        <div id="section1" class="section">
+         <h1>Images</h1>
+        </div>
+        <div id="section2" class="section">
+            <h1>Enter a Neon Caption</h1>
+            <input type="text" id="caption" placeholder="Enter your caption...">
+            <br>
+            <button onclick="generateNeonCaption()">Generate Neon Caption</button>
+        </div>
+        <div id="section3" class="section">
+            <h1>Result</h1>
+            <div id="neonCaption"></div>
+        </div>
+        <div id="section4" class="section">
+            <h1>Thank You</h1>
+        </div>
+    </div>
 
     <script>
         function generateNeonCaption() {
             var caption = document.getElementById('caption').value;
-            document.getElementById('neonCaption').innerHTML = caption;
+            document.getElementById('neonCaption').innerText = caption;
+            // Scroll to the next section
+            document.querySelector('.container').scrollBy({
+                top: window.innerHeight,
+                behavior: 'smooth'
+            });
         }
     </script>
 </body>
