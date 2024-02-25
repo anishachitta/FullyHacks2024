@@ -1,37 +1,34 @@
 import streamlit as st
 import requests
+from openai import OpenAI
 
 def generate_response(prompt):
-    # Set up the OpenAI API endpoint
-    endpoint = "https://api.openai.com/v1/chat/completions"  # Update the endpoint here
+    # Set up the OpenAI API endpoint for chat completions
+    chat_endpoint = "https://api.openai.com/v1/chat/completions"
+    
+    # Set up the OpenAI API endpoint for image generation
+    image_endpoint = "https://api.openai.com/v1/images/generate"
+    
     # Set up your OpenAI API key
-    api_key = "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"
+    api_key = "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"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {api_key}"
     }
-    data = {
-        "model": "gpt-3.5-turbo-0125",  # Specify the model here
-        "messages": [
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": prompt}
-        ]
-    }
-    # Send a POST request to the OpenAI API
-    response = requests.post(endpoint, json=data, headers=headers)
     
-    # Print the entire response
-    print(response.text)
-    
-    # Extract and return the generated response
-    response_json = response.json()
-    
-    if 'choices' in response_json:
-        return response_json['choices'][0]['message']['content'].strip()  # Correct key to extract response
-    else:
-        # Handle the case where the response format has changed
-        return "Unexpected response format."
+   # ChatGPT Request
+    chat_response = requests.post(chat_endpoint, json=chat_data, headers=headers)
+    chat_response_json = chat_response.json()
 
+    # Check if 'choices' is in the response
+    if 'choices' in chat_response_json:
+        chatbot_response = chat_response_json['choices'][0]['message']['content'].strip()
+    else:
+        chatbot_response = "Unexpected response format from ChatGPT."
+
+    # ... (same as before)
+
+    return chatbot_response, image_url
 
 def main():
     st.title("Neon Chatbot UI")
@@ -41,9 +38,10 @@ def main():
     
     if st.button("Send"):
         st.write(f"You: {user_input}")
-        # Generate response using ChatGPT
-        chatbot_response = generate_response(user_input)
+        # Generate response using ChatGPT and DALL·E
+        chatbot_response, image_url = generate_response(user_input)
         st.write(f"Chatbot: {chatbot_response}")
+        st.image(image_url, caption='DALL·E Generated Image', use_column_width=True)
 
 if __name__ == "__main__":
     main()
