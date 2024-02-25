@@ -10,7 +10,7 @@ def generate_response(prompt):
     image_endpoint = "https://api.openai.com/v1/images/generate"
     
     # Set up your OpenAI API key
-    api_key = "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"
+    api_key = "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"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {api_key}"
