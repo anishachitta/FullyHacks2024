@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <header>
         <img src = "bower picture.jpeg" style="max-width: 20%;" alt="Bow Picture">
     </header>
-    <title>Neon Caption Generator</title>
+    <title>CaptionToColor</title>
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Obitron&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
         body, html {
             margin: 0;
             padding: 0;
@@ -15,7 +16,7 @@
             overflow: hidden;
             background-color: black;
             color: white;
-            font-family: Arial, sans-serif;
+            font-family: Orbitron, sans-serif;
             text-align: center;
         }
         .container {
@@ -31,7 +32,7 @@
             height: 150vh;
             display: flex;
             flex-direction: column;
-            font-size: 20px;
+            font-size: 50px;
             justify-content: center;
             align-items: center;
             scroll-snap-align: start;
@@ -49,9 +50,10 @@
         }
         h1 {
             color: #ffffff; /* Neon pink */
-            font-style: italic;
-            text-shadow: 0 0 10px #fe50db, 0 0 20px #fe50db, 0 0 30px #fe50db, 0 0 40px #fe50db, 0 0 50px #fe50db, 0 0 60px #fe50db, 0 0 70px #fe50db; /* Neon pink glow */
-            margin-bottom: 20px;
+            font-style: normal;
+            
+            text-shadow: 0 0 10px #fe50db, 0 0 20px #fe50db, 0 0 30px #fe50db, 0 0 40px #fe50db, 0 0 50px #fe50db; /* Neon pink glow */
+            margin-bottom: 50px;
         }
         input[type="text"] {
             padding: 10px;
@@ -77,12 +79,7 @@
             color: #FFFFFF; /* Neon pink */
             text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff; /* Neon pink glow */
         }
-        .picture-container {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
         
-        }
         .picture {
             width: 150px;
             height: 150px;
@@ -95,23 +92,18 @@
 <body>
     <div class="container">
         <div id="section1" class="section">
-            <h1>Neon Caption Generator</h1>
+            <h1>CaptionToColor</h1>
             <button onclick="scrollToNextSection()">Get Started!</button>
-            <div class="picture-container">
-                <div class="picture"></div>
-                <div class="picture"></div>
-                <div class="picture"></div>
-                <div class="picture"></div>
-            </div>
         </div>
         <div id="section2" class="section">
             <h1>Enter a Neon Caption</h1>
             <input type="text" id="caption" placeholder="Enter your caption...">
+            <button onclick="postData()">Send POST Request</button>            
             <br>
             <button onclick="generateNeonCaption()">Generate Neon Caption</button>
         </div>
         <div id="section3" class="section">
-            <h1>Result</h1>
+            <h1>Your Caption:</h1>
             <div id="neonCaption"></div>
         </div>
         <div id="section4" class="section">
@@ -120,6 +112,27 @@
     </div>
 
     <script>
+        function postData() {
+            const data = {
+            Text: 'neonCaption'
+        };
+            fetch('https://3ef9-34-125-81-19.ngrok-free.app/predict', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+         })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Response from server:', data);
+                alert('Response from server:\n' + JSON.stringify(data));
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+            alert('There was a problem with the fetch operation:\n' + error.message);
+        });
+        }
         function scrollToNextSection() {
             // Scroll to the next section
             document.getElementById('section2').scrollIntoView({
