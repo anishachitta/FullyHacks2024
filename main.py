@@ -3,16 +3,19 @@ import requests
 
 def generate_response(prompt):
     # Set up the OpenAI API endpoint
-    endpoint = "https://api.openai.com/v1/engines/text-davinci-003/completions"
+    endpoint = "https://api.openai.com/v1/chat/completions"  # Update the endpoint here
     # Set up your OpenAI API key
-    api_key = "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"
+    api_key = "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"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {api_key}"
     }
     data = {
-        "prompt": prompt,
-        "max_tokens": 50
+        "model": "gpt-3.5-turbo-0125",  # Specify the model here
+        "messages": [
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt}
+        ]
     }
     # Send a POST request to the OpenAI API
     response = requests.post(endpoint, json=data, headers=headers)
@@ -24,11 +27,10 @@ def generate_response(prompt):
     response_json = response.json()
     
     if 'choices' in response_json:
-        return response_json['choices'][0]['text'].strip()
+        return response_json['choices'][0]['message']['content'].strip()  # Correct key to extract response
     else:
         # Handle the case where the response format has changed
         return "Unexpected response format."
-
 
 
 def main():
