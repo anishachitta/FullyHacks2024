@@ -103,7 +103,7 @@
             <button onclick="generateNeonCaption()">Generate Neon Caption</button>
         </div>
         <div id="section3" class="section">
-            <h1>Your Caption:</h1>
+            <h1>Your Caption</h1>
             <div id="neonCaption"></div>
         </div>
         <div id="section4" class="section">
@@ -114,7 +114,7 @@
     <script>
         function postData() {
             const data = {
-            Text: 'neonCaption'
+            "text": document.getElementById('caption').value
         };
             fetch('https://3ef9-34-125-81-19.ngrok-free.app/predict', {
             method: 'POST',
@@ -132,6 +132,7 @@
             console.error('There was a problem with the fetch operation:', error);
             alert('There was a problem with the fetch operation:\n' + error.message);
         });
+
         }
         function scrollToNextSection() {
             // Scroll to the next section
