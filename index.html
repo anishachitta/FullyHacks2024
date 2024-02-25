@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <header>
         <img src = "bower picture.jpeg" width="200px">
     </header>
     <title>Neon Caption Generator</title>
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Kalam&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Obitron&display=swap');
         body, html {
             margin: 0;
             padding: 0;
@@ -47,8 +48,9 @@
             z-index: 1;
         }
         h1 {
-            color: #91ff00; /* Neon pink */
-            text-shadow: 0 0 10px #ff00cc, 0 0 20px #ff00cc, 0 0 30px #ff00cc, 0 0 40px #ff00cc, 0 0 50px #ff00cc, 0 0 60px #ff00cc, 0 0 70px #ff00cc; /* Neon pink glow */
+            color: #ffffff; /* Neon pink */
+            font-style: italic;
+            text-shadow: 0 0 10px #fe50db, 0 0 20px #fe50db, 0 0 30px #fe50db, 0 0 40px #fe50db, 0 0 50px #fe50db, 0 0 60px #fe50db, 0 0 70px #fe50db; /* Neon pink glow */
             margin-bottom: 20px;
         }
         input[type="text"] {
@@ -61,7 +63,7 @@
         button {
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #ff00ff; /* Neon pink */
+            background-color: #ff00c3; /* Neon pink */
             color: black;
             border: none;
             border-radius: 5px;
@@ -94,6 +96,7 @@
     <div class="container">
         <div id="section1" class="section">
             <h1>Neon Caption Generator</h1>
+            <button onclick="scrollToNextSection()">Get Started!</button>
             <div class="picture-container">
                 <div class="picture"></div>
                 <div class="picture"></div>
@@ -117,6 +120,12 @@
     </div>
 
     <script>
+        function scrollToNextSection() {
+            // Scroll to the next section
+            document.getElementById('section2').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
         function generateNeonCaption() {
             var caption = document.getElementById('caption').value;
             document.getElementById('neonCaption').innerHTML = caption;
