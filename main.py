@@ -1,13 +1,12 @@
 
 import streamlit as st
 import requests
-import os
 
 def generate_response(prompt):
     # Set up the OpenAI API endpoint
     endpoint = "https://api.openai.com/v1/engines/davinci/completions"
     # Set up your OpenAI API key
-    api_key = os.gentenv("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")
+    api_key = "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"
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {api_key}"
