@@ -72,10 +72,16 @@
         button:hover {
             background-color: #ff66ff; /* Lighter neon pink on hover */
         }
+        #neonCaption {
+            font-size: 45px; /* Increased font size */
+            color: #FFFFFF; /* Neon pink */
+            text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 60px #ff00ff, 0 0 70px #ff00ff; /* Neon pink glow */
+        }
         .picture-container {
             display: flex;
             justify-content: space-around;
             margin-top: 20px;
+        
         }
         .picture {
             width: 150px;
@@ -91,12 +97,25 @@
         <div id="section1" class="section">
             <h1>Neon Caption Generator</h1>
             <button onclick="scrollToNextSection()">Get Started!</button>
+            <div class="picture-container">
+                <div class="picture"></div>
+                <div class="picture"></div>
+                <div class="picture"></div>
+                <div class="picture"></div>
+            </div>
         </div>
         <div id="section2" class="section">
             <h1>Enter a Neon Caption</h1>
             <input type="text" id="caption" placeholder="Enter your caption...">
             <br>
             <button onclick="generateNeonCaption()">Generate Neon Caption</button>
+        </div>
+        <div id="section3" class="section">
+            <h1>Result</h1>
+            <div id="neonCaption"></div>
+        </div>
+        <div id="section4" class="section">
+            <h1>Thank You</h1>
         </div>
     </div>
 
