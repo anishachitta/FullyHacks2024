@@ -122,12 +122,34 @@
             'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
+    
          })
             .then(response => response.json())
             .then(data => {
                 console.log('Response from server:', data);
                 alert('Response from server:\n' + JSON.stringify(data));
+                // If-else handling for the response data
+        if (data && data.recommended_color) {
+            const recommendedColor = data.recommended_color;
+            if (recommendedColor === 'yellow') {
+                console.log('Recommended color is yellow');
+                // Handle yellow color
+            } else if (recommendedColor === 'blue') {
+                console.log('Recommended color is blue');
+                // Handle blue color
+            } else if (recommendedColor === 'pink') {
+                console.log('Recommended color is pink');
+                // Handle pink color
+            } else {
+                console.log('Recommended color is not yellow, blue, or pink');
+                // Handle other colors or no recommendation
+            }
+        } else {
+            console.log('No recommended color found in the response');
+            // Handle case where no recommended color is provided in the response
+        }
         })
+        
         .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
             alert('There was a problem with the fetch operation:\n' + error.message);
