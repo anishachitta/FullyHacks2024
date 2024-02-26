@@ -109,6 +109,7 @@
         <div id="section4" class="section">
             <h1>Thank You</h1>
         </div>
+        <div class="circle" id="colorCircle"></div>
     </div>
 
     <script>
@@ -116,7 +117,7 @@
             const data = {
             "text": document.getElementById('caption').value
         };
-            fetch('https://b854-34-125-81-19.ngrok-free.app/predict', {
+            fetch('https://e136-34-125-81-19.ngrok-free.app/predict', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json'
@@ -129,25 +130,22 @@
                 console.log('Response from server:', data);
                 alert('Response from server:\n' + JSON.stringify(data));
                 // If-else handling for the response data
+
         if (data && data.recommended_color) {
             const recommendedColor = data.recommended_color;
+            const circleElement = document.getElementById('colorCircle');
             if (recommendedColor === 'yellow') {
-                console.log('Recommended color is yellow');
-                // Handle yellow color
+                circleElement.style.backgroundColor = 'yellow';
             } else if (recommendedColor === 'blue') {
-                console.log('Recommended color is blue');
-                // Handle blue color
+                circleElement.style.backgroundColor = 'blue';
             } else if (recommendedColor === 'pink') {
-                console.log('Recommended color is pink');
-                // Handle pink color
-            } else {
-                console.log('Recommended color is not yellow, blue, or pink');
-                // Handle other colors or no recommendation
-            }
+                circleElement.style.backgroundColor = 'pink';
+            } 
         } else {
             console.log('No recommended color found in the response');
             // Handle case where no recommended color is provided in the response
         }
+
         })
         
         .catch(error => {
